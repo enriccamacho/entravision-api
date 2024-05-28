@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    container_name: entravision-backend
+    volumes:
+      - .:/app
+    restart: always
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - DATABASE_URL=mongodb://mongo:27017/entravision
+    links:
+      - mongo
+    networks:
+      - mynetwork
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always 
+    ports:
+      - '27017:27017'
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
