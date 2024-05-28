@@ -1,7 +1,16 @@
-version: '3'
+version: '3.8'
 services:
-  app:
-    container_name: entravision-backend
+  frontend:
+    container_name: entravision-frontend
+    build:
+      context: ./../entravision-app 
+      dockerfile: Dockerfile 
+    restart: always
+    ports:
+      - '4200:4200'  
+    networks:
+      - mynetwork
+  backend:    container_name: entravision-backend
     volumes:
       - .:/app
     restart: always
