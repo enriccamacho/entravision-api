@@ -10,8 +10,6 @@ COPY . .
 
 RUN npm install typescript --save-dev
 
-RUN npm run build
-
 EXPOSE 3000
 
 CMD ["node", "index.js"]
